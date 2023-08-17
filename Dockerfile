@@ -1,6 +1,5 @@
-FROM python:3.7-alpine
+FROM python:3.8-slim
 WORKDIR /app
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
-COPY . .
+COPY . ./
+RUN pip install --no-cache-dir -r requirements.txt
 CMD [ "python", "./app.py" ]
