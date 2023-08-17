@@ -24,7 +24,7 @@ pipeline {
         stage ('Build'){
             steps {
                 script {
-                    buildDockerImage()
+                    gv.buildDockerImage()
                     
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
         stage ('Pushing to dockerhub'){
             steps {
                 script {
-                    pushtoHub()
+                    gv.pushtoHub()
                     
                 }
             }
@@ -42,7 +42,7 @@ pipeline {
         stage ('Deploy to K8S'){
             steps {
                 script {
-                    deploytok8s()
+                    gv.deploytok8s()
                     
                 }
             }
