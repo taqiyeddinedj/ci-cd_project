@@ -16,6 +16,7 @@ spec:
       containers:
       - name: myapp
         image: taqiyeddinedj/my-repo:webapp-1.0
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             memory: "128Mi"
