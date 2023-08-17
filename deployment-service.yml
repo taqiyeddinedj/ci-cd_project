@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: taqiyeddinedj/ci_cd_pipeline:web-app-1.0
+        image: taqiyeddinedj/my-repo:webapp-1.0
         resources:
           limits:
             memory: "128Mi"
