@@ -5,3 +5,4 @@ def get_hostname():
 
 if __name__ == '__main__':
     print(get_hostname())
+    print("Hello, this is working!")
