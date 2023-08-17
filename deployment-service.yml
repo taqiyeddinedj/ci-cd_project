@@ -1,39 +1,19 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: myapp-deployment
+  name: hostname-job
   namespace: default 
 spec:
-  selector:
-    matchLabels:
-      app: myapp
-  replicas: 2
   template:
     metadata:
       labels:
-        app: myapp
+        app: hostname-app
     spec:
       containers:
-      - name: myapp
-        image: taqiyeddinedj/my-repo:webapp-1.0
+      - name: hostname-container
+        image: taqiyeddinedj/my-repo:webapp-2.0
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m" 
-        ports:
-        - containerPort: 8080
-        
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: myapp-service
-  namespace: default
-spec:
-  type: ClusterIP 
-  selector:
-    app: myapp
-  ports:
-    - port: 8080
-      targetPort: 5000
+      restartPolicy: Never
