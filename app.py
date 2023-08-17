@@ -1,8 +1,12 @@
+from flask import Flask
 import subprocess
 
-def run_command(command):
-    return subprocess.getoutput(command)
+app = Flask(__name__)
+
+@app.route('/')
+def print_hostname():
+    hostname = subprocess.run(['hostname'], capture_output=True)
+    return hostname.stdout.decode()
 
 if __name__ == '__main__':
-    run_command("echo 'Hello, this pod is working.'")
-    run_command("echo $(hostname)")
+    app.run(host='0.0.0.0')

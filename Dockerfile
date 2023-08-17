@@ -1,4 +1,5 @@
-FROM python:3.8-slim
-WORKDIR /app
-COPY app.py ./app.py
-CMD [ "python", "./app.py" ]
+FROM python:3.7-alpine
+COPY . /app
+WORKDIR /app 
+RUN pip install flask
+CMD ["python", "app.py"]
