@@ -1,8 +1,8 @@
 import subprocess
 
-def get_hostname():
-    return subprocess.getoutput('hostname')
+def run_command(command):
+    return subprocess.getoutput(command)
 
 if __name__ == '__main__':
-    print(get_hostname())
-    print("Hello, this is working!")
+    run_command("echo 'Hello, this pod is working.'")
+    run_command("echo $(hostname)")
