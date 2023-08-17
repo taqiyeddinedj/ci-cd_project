@@ -11,7 +11,6 @@ pipeline {
                 }
             }
         }
-
         stage('test') {
             steps {
                 script {
@@ -20,8 +19,7 @@ pipeline {
                 }
             }
         }
-
-        stage ('Build'){
+        stage ('Build & pushing'){
             steps {
                 script {
                     gv.buildDockerImage()
@@ -29,16 +27,6 @@ pipeline {
                 }
             }
         }
-
-        stage ('Pushing to dockerhub'){
-            steps {
-                script {
-                    gv.pushtoHub()
-                    
-                }
-            }
-        }
-
         stage ('Deploy to K8S'){
             steps {
                 script {
