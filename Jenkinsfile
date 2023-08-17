@@ -24,10 +24,7 @@ pipeline {
         stage ('Build'){
             steps {
                 script {
-                    echo "Building the docker image...."
-                    withCredentials([usernamePassword(credentialsId:'dockr-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                        sh "docker build -t taqiyeddinedj/ci_cd_pipline:web-app:1.0"
-    }
+                    buildDockerImage()
                     
                 }
             }
@@ -36,8 +33,7 @@ pipeline {
         stage ('Pushing to dockerhub'){
             steps {
                 script {
-                    sh "echo $PASS | docker login -u $USER --passwd-stdin"
-                    sh "docker push taqiyeddinedj/ci_cd_pipline:web-app:1.0"
+                    pushtoHub()
                     
                 }
             }
@@ -46,8 +42,7 @@ pipeline {
         stage ('Deploy to K8S'){
             steps {
                 script {
-                    echo "Deploying now the apllication on the kubernetes cluster"
-                    kubernetesDeploy (configs: 'deployment-service.yml', kubeconfigId: 'kubeconfig')
+                    deploytok8s()
                     
                 }
             }

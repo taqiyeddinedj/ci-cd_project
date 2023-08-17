@@ -1,7 +1,7 @@
 def buildDockerImage() {
     echo "Building the docker image...."
     withCredentials([usernamePassword(credentialsId:'dockr-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-        sh "docker build -t taqiyeddinedj/ci_cd_pipline:web-app:1.0"
+        sh "docker build -t taqiyeddinedj/ci_cd_pipline:web-app:1.0 ."
     }
 }
 def pushtoHub() {
