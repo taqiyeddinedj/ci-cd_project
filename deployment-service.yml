@@ -31,9 +31,10 @@ metadata:
   name: myapp-service
   namespace: default
 spec:
-  type: ClusterIP 
+  type: NodePort
   selector:
     app: myapp
   ports:
     - port: 8080
-      targetPort: 5000
+      targetPort: 8080
+      nodePort: 30000
