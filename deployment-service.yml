@@ -31,7 +31,7 @@ metadata:
   name: myapp-service
   namespace: default
 spec:
-  type: NodePort
+  type: NodePort 
   selector:
     app: myapp
   ports:
